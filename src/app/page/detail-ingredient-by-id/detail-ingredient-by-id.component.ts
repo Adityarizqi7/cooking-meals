@@ -31,8 +31,13 @@ export class DetailIngredientByIdComponent implements OnInit {
               try {
                 this.loadingIngredientDetail = true;
                 this.DetailIngreById.getDataIngredientById(id).subscribe((data: any) => {
-                    this.ingredientDetail = data.meals
-                    this.loadingIngredientDetail = false
+                    if (!data.meals) {
+                      this.ingredientDetail = []
+                      this.loadingIngredientDetail = false
+                    } else {
+                      this.ingredientDetail = data.meals
+                      this.loadingIngredientDetail = false
+                    }
                 })
               } catch (error) {
                 this.loadingIngredientDetail = false

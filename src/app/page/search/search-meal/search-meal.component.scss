@@ -2,6 +2,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 565px) {
+        align-items: start;
+        flex-direction: column;
+        justify-content: start;
+    }
+
     h1 {
         font-size: 1.75rem;
          font-weight: 500;
@@ -13,6 +20,10 @@
         cursor: pointer;
         position: relative;
         align-items: center;
+
+        @media (max-width: 575px) {
+            width: 100%;
+        }
 
         &:hover {
             opacity: 0.7;

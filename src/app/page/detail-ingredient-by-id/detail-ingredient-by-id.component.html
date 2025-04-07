@@ -1,6 +1,6 @@
 <section class="poppins-medium">
-    <h5 *ngIf="loadingIngredientDetail && ingredientDetail.length > 0" style="margin-top: 1.25rem; padding: 1rem; font-size: 1.5rem; font-weight: 600;">Memuat Ingredient...</h5>
-    <h5 *ngIf="!ingredientDetail" class="poppins-medium" style="margin-top: 1.25rem; font-size: 1.5rem;">Data tidak ada...</h5>
+    <h5 *ngIf="loadingIngredientDetail" style="margin-top: 1.25rem; padding: 1rem; font-size: 1.5rem; font-weight: 600;">Memuat Ingredient...</h5>
+    <h5 *ngIf="ingredientDetail.length < 1 && !loadingIngredientDetail" class="poppins-medium" style="margin-top: 1.25rem; font-size: 1.5rem;">Data tidak ada...</h5>
     <div *ngIf="!loadingIngredientDetail" class="wrapper-list-ingre">
         <div *ngFor="let ingre of ingredientDetail" class="wrapper-ingredient-detail">
             <div class="breadcumb" style="display: flex; gap: 4px; align-items: center; margin-bottom: 1rem; margin-top: 8px; padding: 2px 1rem;">

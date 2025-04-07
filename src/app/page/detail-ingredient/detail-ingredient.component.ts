@@ -39,7 +39,10 @@ export class DetailIngredientComponent implements OnInit {
           try {
             this.loadingDataIngreDetail = true
             this.DetailIngreService.getIngreDetail(slug).subscribe(data => {
-              if (data.meals) {
+              if (!data.meals) {
+                this.ingredientDetail = []
+                this.loadingDataIngreDetail = false;
+              } else {
                 this.ingredientDetail = data.meals.map((element: { idMeal: string, strMeal: string, strMealThumb: string }) => (
                   {
                       id: element?.idMeal,
@@ -48,8 +51,6 @@ export class DetailIngredientComponent implements OnInit {
                   })
                 )
                 this.loadingDataIngreDetail = false;
-              } else {
-                this.ingredientDetail = []
               }
             })
           } catch (error) {

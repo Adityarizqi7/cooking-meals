@@ -35,8 +35,13 @@ export class SearchMealComponent implements OnInit {
             try {
               this.loadingSearchMeal = true;
               this.SearchMeal.getSearchMeal(slug).subscribe(data => {
-                this.searchMealData = data.meals
-                this.loadingSearchMeal = false;
+                if (!data.meals) {
+                  this.searchMealData = []
+                  this.loadingSearchMeal = false;
+                } else {
+                  this.searchMealData = data.meals
+                  this.loadingSearchMeal = false;
+                }
               })
             } catch (error) {
               this.loadingSearchMeal = false;
