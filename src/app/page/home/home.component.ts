@@ -63,7 +63,6 @@ export class HomeComponent implements OnInit {
     }
 
     handleSearch() {
-        console.log('haii')
         this.router.navigate(['/search-meal'], { queryParams: { ref: this.search }})
     }
 }

@@ -24,12 +24,10 @@ export class DetailIngredientByIdComponent implements OnInit {
     ngOnInit(): void {
         this.route.queryParamMap.subscribe(params => {
             const id = params.get('ref')
-            console.log(id)
             if (id) {
               try {
                 this.loadingIngredientDetail = true;
                 this.DetailIngreById.getDataIngredientById(id).subscribe((data: any) => {
-                    console.log(data, 'hhaa')
                     this.ingredientDetail = data.meals
                     this.loadingIngredientDetail = false
                 })

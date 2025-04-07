@@ -10,7 +10,8 @@
         <h1>Main Ingredients for {{ slug }}</h1>
     </div>
 
-    <h5 *ngIf="loadingDataIngreDetail" class="poppins-medium" style="margin-top: 1.25rem; font-size: 1.5rem;">Memuat Ingredient...</h5>
+    <h5 *ngIf="loadingDataIngreDetail && ingredientDetail.length > 0" class="poppins-medium" style="margin-top: 1.25rem; font-size: 1.5rem;">Memuat Ingredient...</h5>
+    <h5 *ngIf="!ingredientDetail.length" class="poppins-medium" style="margin-top: 1.25rem; font-size: 1.5rem;">Data tidak ada...</h5>
     <div *ngIf="ingredientDetail">
         <div *ngIf="!loadingDataIngreDetail" class="wrapper-list-detail-ingre">
             <div *ngFor="let ingre of ingredientDetail;" [routerLink]="['/ingredient']" class="wrapper-box-detail-ingre">

@@ -55,7 +55,6 @@ export class SearchMealComponent implements OnInit {
         this.router.navigate(['/ingredient/detail'], { queryParams: { ref: data.idMeal } })
     }
     handleSearch() {
-      console.log('haii')
       this.router.navigate(['/search-meal'], { queryParams: { ref: this.search }})
   }
 }
