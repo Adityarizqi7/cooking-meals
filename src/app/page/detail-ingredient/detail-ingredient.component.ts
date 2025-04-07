@@ -3,9 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DetailIngredientServiceService } from '../../service/detail-ingredient-service.service';
 import { CommonModule } from '@angular/common';
-import { Ingredient } from '../../models/ingredient';
 import { DetailIngredient } from '../../models/detail-ingredient';
-import { BreadcumbComponent } from '../../breadcumb/breadcumb/breadcumb.component';
 import { DetailIngredientByIdService } from '../../service/details/detail-ingredient-by-id.service';
 
 @Component({
@@ -31,31 +29,34 @@ export class DetailIngredientComponent implements OnInit {
   loadingDataIngreDetail: boolean = false;
 
   ngOnInit(): void {
-    
     this.route.queryParamMap.subscribe(params => {
-          const slug = params.get('ref')
-          this.title.setTitle(`Ingredient (${slug}) - Cooking Meals`)
+        const slug = params.get('ref')
+        this.title.setTitle(`Ingredient (${slug}) - Cooking Meals`)
 
-          this.slug = slug;
+        this.slug = slug;
 
-          if (slug) {
-            try {
-              this.loadingDataIngreDetail = true
-              this.DetailIngreService.getIngreDetail(slug).subscribe(data => {
-                  this.ingredientDetail = data.meals.map((element: { idMeal: string, strMeal: string, strMealThumb: string }) => (
-                    {
-                        id: element?.idMeal,
-                        name: element?.strMeal,
-                        thumbnail: element?.strMealThumb
-                    })
-                  )
-                  this.loadingDataIngreDetail = false;
-              })
-            } catch (error) {
-              console.log(error)
-              this.loadingDataIngreDetail = false;
-            }
+        if (slug) {
+          try {
+            this.loadingDataIngreDetail = true
+            this.DetailIngreService.getIngreDetail(slug).subscribe(data => {
+              if (data.meals) {
+                this.ingredientDetail = data.meals.map((element: { idMeal: string, strMeal: string, strMealThumb: string }) => (
+                  {
+                      id: element?.idMeal,
+                      name: element?.strMeal,
+                      thumbnail: element?.strMealThumb
+                  })
+                )
+                this.loadingDataIngreDetail = false;
+              } else {
+                this.ingredientDetail = []
+              }
+            })
+          } catch (error) {
+            console.log(error)
+            this.loadingDataIngreDetail = false;
           }
+        }
       })
   }
 

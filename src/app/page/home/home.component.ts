@@ -5,6 +5,7 @@ import { Ingredient } from '../../models/ingredient';
 import { Router, RouterModule } from '@angular/router';
 import { IngredientsService } from '../../service/ingredients.service';
 import { DetailIngredientServiceService } from '../../service/detail-ingredient-service.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',

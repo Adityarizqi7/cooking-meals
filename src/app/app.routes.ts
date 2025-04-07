@@ -12,7 +12,8 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
-                component:HomeComponent
+                component:HomeComponent,
+                title: 'Ingredient Meal - Cooking Meals'
             },
             {
                 path: 'ingredient/menu',

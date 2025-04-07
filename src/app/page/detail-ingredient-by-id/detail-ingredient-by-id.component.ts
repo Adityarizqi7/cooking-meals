@@ -3,6 +3,7 @@ import { DetailIngredientByIdService } from '../../service/details/detail-ingred
 import { ActivatedRoute, Router } from '@angular/router';
 import { DetailIngredientById } from '../../models/detail-ingredient-by-id';
 import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-detail-ingredient-by-id',
@@ -16,6 +17,7 @@ export class DetailIngredientByIdComponent implements OnInit {
     ingredientDetail: DetailIngredientById[] = []
 
     constructor(
+        private title: Title, 
         private DetailIngreById: DetailIngredientByIdService,
         private route: ActivatedRoute,
         private router: Router
@@ -24,6 +26,7 @@ export class DetailIngredientByIdComponent implements OnInit {
     ngOnInit(): void {
         this.route.queryParamMap.subscribe(params => {
             const id = params.get('ref')
+            this.title.setTitle(`Detail Ingredient - Cooking Meals`)
             if (id) {
               try {
                 this.loadingIngredientDetail = true;
