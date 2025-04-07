@@ -1,0 +1,117 @@
+<section class="poppins-medium">
+    <h5 *ngIf="loadingIngredientDetail" style="margin-top: 1.25rem; padding: 1rem; font-size: 1.5rem; font-weight: 600;">Memuat Ingredient...</h5>
+    <div *ngIf="!loadingIngredientDetail" class="wrapper-list-ingre">
+        <div *ngFor="let ingre of ingredientDetail" class="wrapper-ingredient-detail">
+            <div class="breadcumb" style="display: flex; gap: 4px; align-items: center; margin-bottom: 1rem; margin-top: 8px; padding: 2px 1rem;">
+                <div (click)="backToMenuIngredient(ingre)">Menu Ingredient</div>
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAMZJREFUSEvtlE0KwjAQhb/eQXDvpndQ0OuI24I3EfeCBxHEMwh6AGnBK2gHKkTEzA8WN802yXx5b96koOdV9FyfAaA6HLFoDeyAm1od3D1YARvgAswtEK+CMXBqFUyAKzAFmpwSL0BqpZBzp+QrJAJ4QQ5ACWQhUYBARsBRg+QAD0tKkjOiZAbc03u/Bkiy3vrxV4tyDpn8lwIRBRJTU4IiANcMRADLdtC2XfYXQK0lLWJRBewt/1BEgfbgj/2IAhdkAKh2PQESzCgZeI9igwAAAABJRU5ErkJggg=="/>
+                <div class="currentpage">Detail Ingredient</div>
+            </div>
+    
+            <div class="jumbroton-image-ingre">
+                <div class="bg-overlay"></div>
+                <img [src]="ingre.strMealThumb" alt="">
+                <h1 class="title-ingredient">{{ ingre.strMeal }}</h1>
+            </div>
+    
+            <div class="information-ingre">
+                <div class="highlight-info-ingre">
+                    <div class="left-tag">
+                        <div class="tag-area-ingre" title="Area Ingredient">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M2 2h20M8.049 18.53C9.932 20.178 10.873 21 12 21s2.069-.823 3.951-2.47l2-1.748c1.008-.882 1.513-1.322 1.78-1.913c.269-.59.269-1.26.269-2.599V9.702M20 6V2H4v10.27c0 1.34 0 2.009.268 2.6c.175.385.451.707.903 1.13M8.5 13h7m-7-5h7"/></svg>
+                            {{ ingre.strArea }}
+                        </div>
+                        <div class="tag-category-ingre" title="Category Ingredient">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" d="M4.979 6.315C2.993 7.109 2 7.506 2 8s.993.89 2.979 1.685l2.808 1.124C9.773 11.603 10.767 12 12 12s2.227-.397 4.213-1.191l2.808-1.124C21.007 8.891 22 8.494 22 8s-.993-.89-2.979-1.685l-2.808-1.123C14.227 4.397 13.233 4 12 4c-.954 0-1.764.237-3 .712"/><path d="m5.766 10l-.787.315C2.993 11.109 2 11.507 2 12s.993.89 2.979 1.685l2.808 1.124C9.773 15.603 10.767 16 12 16s2.227-.397 4.213-1.191l2.808-1.124C21.007 12.891 22 12.493 22 12s-.993-.89-2.979-1.685L18.234 10"/><path stroke-linecap="round" d="M19.021 17.685C21.007 16.891 22 16.494 22 16c0-.493-.993-.89-2.979-1.685L18.234 14M5.766 14l-.787.315C2.993 15.109 2 15.507 2 16s.993.89 2.979 1.685l2.808 1.124C9.773 19.603 10.767 20 12 20c.954 0 1.764-.237 3-.712"/></g></svg>
+                            {{ ingre.strCategory }}
+                        </div>
+                    </div>
+                    <div class="right-tag">
+                        <div *ngIf="ingre.strTags" class="tag-tags-ingre" title="Tags Ingredient">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.728 16.137c-1.545-1.546-2.318-2.318-2.605-3.321c-.288-1.003-.042-2.068.45-4.197l.283-1.228c.413-1.792.62-2.688 1.233-3.302s1.51-.82 3.302-1.233l1.228-.284c2.13-.491 3.194-.737 4.197-.45c1.003.288 1.775 1.061 3.32 2.606l1.83 1.83C20.657 9.248 22 10.592 22 12.262c0 1.671-1.344 3.015-4.033 5.704c-2.69 2.69-4.034 4.034-5.705 4.034c-1.67 0-3.015-1.344-5.704-4.033z"/><circle cx="8.607" cy="8.879" r="2" transform="rotate(-45 8.607 8.879)"/><path stroke-linecap="round" d="m11.542 18.5l6.979-6.98"/></g></svg>
+                            {{ ingre.strTags }}
+                        </div>
+                        <div class="tag-youtube-ingre" (click)="navigateToYoutube(ingre.strYoutube)" title="Youtube Video">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#ff0101"><path d="M12.04 3.5c.59 0 7.54.02 9.34.5a3.02 3.02 0 0 1 2.12 2.15C24 8.05 24 12 24 12v.04c0 .43-.03 4.03-.5 5.8A3.02 3.02 0 0 1 21.38 20c-1.76.48-8.45.5-9.3.51h-.17c-.85 0-7.54-.03-9.29-.5A3.02 3.02 0 0 1 .5 17.84c-.42-1.61-.49-4.7-.5-5.6v-.5c.01-.9.08-3.99.5-5.6a3.02 3.02 0 0 1 2.12-2.14c1.8-.49 8.75-.51 9.34-.51zM9.54 8.4v7.18L15.82 12 9.54 8.41z"/></svg>
+                            <h4>Youtube</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="instruction-ingre montserrat">
+                    <p>
+                        {{ ingre.strInstructions }}
+                    </p>
+                </div>
+                <div class="ingredients">
+                    <h4>INGREDIENTS</h4>
+                    <div class="list-ingre">
+                        <div class="item-ingre">
+                            <span *ngIf="ingre.strMeasure1 !== '' && ingre.strIngredient1 !== ''" style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure1.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure1.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient1 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure2 !== '' && ingre.strIngredient2 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure2.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure2.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient2 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure3 !== '' && ingre.strIngredient3 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure3.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure3.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient3 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure4 !== '' && ingre.strIngredient4 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure4.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure4.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient4 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure5 !== '' && ingre.strIngredient5 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure5.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure5.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient5 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure6 !== '' && ingre.strIngredient6 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure6.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure6.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient6 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure7 !== '' && ingre.strIngredient7 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure7.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure7.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient7 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure8 !== '' && ingre.strIngredient8 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure8.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure8.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient8 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure9 !== '' && ingre.strIngredient9 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure9.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure9.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient9 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure10 !== '' && ingre.strIngredient10 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure10.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure10.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient10 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure11 !== '' && ingre.strIngredient11 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure11.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure11.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient11 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure12 !== '' && ingre.strIngredient12 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure12.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure12.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient12 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure13 !== '' && ingre.strIngredient13 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure13.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure13.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient13 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure14 !== '' && ingre.strIngredient14 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure14.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure14.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient14 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure15 !== '' && ingre.strIngredient15 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure15.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure15.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient15 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure16 !== '' && ingre.strIngredient16 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure16.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure16.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient16 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure17 !== '' && ingre.strIngredient17 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure17.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure17.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient17 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure18 !== '' && ingre.strIngredient18 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure18.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure18.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient18 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure19 !== '' && ingre.strIngredient19 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure19.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure19.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient19 }} </span> 
+                        </div>
+                        <div *ngIf="ingre.strMeasure20 !== '' && ingre.strIngredient20 !== ''" class="item-ingre">
+                            <span style="font-weight: 600; display: inline-block; margin-right: 1.10rem;">{{ ingre.strMeasure20.split(' ')[0] }}</span> <span style="margin-right: 8px;">{{ ingre.strMeasure20.split(' ')[1] }}</span> <span style="color: rgb(42, 92, 255); font-weight: 600;">{{ ingre.strIngredient20 }} </span> 
+                        </div>
+                    </div>
+                </div>
+                <div class="sourcre-ingre">
+                    <i>Source: <a href="http://" target="_blank" rel="noopener noreferrer" style="color: black;">{{ ingre.strSource }}</a></i>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</section>

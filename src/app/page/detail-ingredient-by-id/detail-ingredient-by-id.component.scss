@@ -1,0 +1,161 @@
+.wrapper-ingredient-detail {
+    .breadcumb {
+        div {
+            &:first-child { font-weight: 600; cursor: pointer; }
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+        .currentpage {
+            font-weight: 400;
+            color: gray;
+        }
+    }
+    .jumbroton-image-ingre {
+        width: 100%;
+        position: relative;
+        
+        img {
+            width: 100%;
+            height: 27rem;
+            object-fit: cover;
+            aspect-ratio: 16 / 9;
+        }
+
+        .bg-overlay {
+            height: 27rem;
+        }
+
+        .title-ingredient {
+            top: 50%;
+            left: 50%;
+            font-size: 4rem;
+            position: absolute;
+            text-align: center;
+            color: white !important;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .information-ingre {
+        padding: 1rem 2rem 3rem 2rem;
+
+        .highlight-info-ingre {
+    
+            gap: 10px;
+            display: flex;
+            justify-content: space-between;
+
+            @media (max-width: 555px) {
+                gap: 1.5rem;
+                flex-direction: column;
+                justify-content: start !important;
+            }
+            
+            .left-tag {
+                gap: 10px;
+                display: flex;
+                flex-wrap: wrap;
+                overflow-x: auto;
+                align-items: center;
+                justify-content: space-between;
+
+                @media (max-width: 555px) {
+                    justify-content: start;
+                }
+    
+                .tag-area-ingre {
+                    gap: 6px;
+                    display: flex;
+                    align-items: center;
+                    padding: 8px 14px;
+                    border-radius: 9999px;
+                    border: 1px solid rgb(197, 197, 197);
+                    
+                }
+                .tag-category-ingre {
+                    gap: 6px;
+                    display: flex;
+                    align-items: center;
+                    padding: 8px 14px;
+                    border-radius: 9999px;
+                    border: 1px solid rgb(197, 197, 197);
+                }
+            }
+            .right-tag {
+                gap: 10px;
+                display: flex;
+                flex-wrap: wrap;
+                overflow-x: auto;
+                align-items: center;
+                justify-content: space-between;
+
+                @media (max-width: 555px) {
+                    justify-content: start;
+                }
+
+                .tag-youtube-ingre {
+                    gap: 7px;
+                    color: white;
+                    display: flex;
+                    cursor: pointer;
+                    padding: 8px 14px;
+                    align-items: center;
+                    border-radius: 9999px;
+                    background-color: rgb(0, 0, 0);
+
+                    transition-property: all;
+                    transition-duration: 15ms;
+                    transition-timing-function: cubic-bezier();
+
+                    &:hover {
+                        background-color: rgb(43, 43, 43);
+                    }
+                }
+                .tag-tags-ingre {
+                    gap: 6px;
+                    display: flex;
+                    padding: 8px 14px;
+                    align-items: center;
+                    border-radius: 9999px;
+                    border: 1px solid rgb(197, 197, 197);
+                }
+            }
+        }
+
+        .instruction-ingre {
+            text-indent: 2rem;
+            line-height: 1.75;
+            margin-top: 2rem;
+            text-align: justify;
+        }
+
+        .ingredients {
+            font-size: 2rem;
+            margin-top: 1.75rem;
+            h4 {
+                font-weight: 500;
+                letter-spacing: 2px;
+            }
+            .list-ingre {
+                margin-top: 1rem;
+                > * {
+                    margin-bottom: 1rem;
+                }
+                .item-ingre {
+                    font-size: 1.15rem;
+                    font-weight: 400;
+                }
+            }
+        }
+        
+        .sourcre-ingre {
+            margin-top: 6rem;
+
+            @media (max-width: 475px) {
+                font-size: 3.5vw;
+            }
+        }
+    }
+
+}

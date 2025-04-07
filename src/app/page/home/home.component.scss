@@ -1,0 +1,125 @@
+.title-ingredient-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+        font-size: 1.75rem;
+         font-weight: 500;
+    }
+    .search-meal {
+        gap: 6px;
+        display: flex;
+        cursor: pointer;
+        position: relative;
+        align-items: center;
+
+        &:hover {
+            opacity: 0.7;
+        }
+
+        .wrapper-svg {
+            width: 2rem;
+            height: 2rem;
+            right: 12px;
+            border-radius: 9999px;
+            padding: 6px;
+            position: absolute;
+            background-color: rgb(255, 80, 109);
+
+            &:hover {
+                background-color: rgb(248, 30, 66);                
+            }
+        }
+
+        input {
+            width: 100%;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 9999px;
+            padding: 14px 50px 14px 20px;
+            box-sizing: border-box;
+
+        }
+    }
+}
+
+.button-load-more {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.button-see-menu {
+    margin-top: 1rem;
+    line-height: 1.5;
+    background-color: rgb(255, 80, 109);
+
+    &:hover {
+        background-color: rgb(255, 41, 77);        
+    }
+}
+
+.wrapper-list-ingre{
+    gap: 1rem;
+    display: grid;
+    margin-top: 1.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (max-width: 475px) {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .wrapper-box-ingre {
+        .box-item-ingre {
+            cursor: pointer;
+            border-radius: 6px;
+            position: relative;
+            border: 1px solid rgba(209, 209, 209, 0.671);
+            
+            &:hover {
+                .bg-overlay { display: block !important; }
+                svg { display: block !important; }
+            }
+
+            svg {
+                top: 40%;
+                left: 55%;
+                display: none;
+                padding: 10px;
+                stroke: white;
+                position: absolute;
+                border-radius: 99999px;
+                transform: translate(-100%, -100%);
+                background-color: rgba(255, 80, 109, 0.76);
+            }
+
+            .bg-overlay {
+                display: none;
+            }
+
+            .ingre-detail {
+                padding: 0 1rem 1rem 1rem;
+                h2 {
+                    font-weight: 600;
+                    line-height: 1.5;
+                    color: rgb(255, 80, 109);
+                }
+                h4 {
+                    font-weight: 400;
+                    color: rgb(139, 139, 139);
+                }
+            }
+            .image-ingre {
+                width: 100%;
+                height: 16rem;
+                object-fit: cover;
+                aspect-ratio: 16 / 9;
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+<section class="poppins-medium" style="padding: 1rem 1rem 2rem 1rem;">
+
+    <div class="breadcumb" style="display: flex; gap: 4px; align-items: center; margin-bottom: 1rem; margin-top: 8px;">
+        <div (click)="backToHome()">Home</div>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAMZJREFUSEvtlE0KwjAQhb/eQXDvpndQ0OuI24I3EfeCBxHEMwh6AGnBK2gHKkTEzA8WN802yXx5b96koOdV9FyfAaA6HLFoDeyAm1od3D1YARvgAswtEK+CMXBqFUyAKzAFmpwSL0BqpZBzp+QrJAJ4QQ5ACWQhUYBARsBRg+QAD0tKkjOiZAbc03u/Bkiy3vrxV4tyDpn8lwIRBRJTU4IiANcMRADLdtC2XfYXQK0lLWJRBewt/1BEgfbgj/2IAhdkAKh2PQESzCgZeI9igwAAAABJRU5ErkJggg=="/>
+        <div class="currentpage">Ingredient Menu</div>
+    </div>
+
+    <div class="title-ingredient-section">
+        <h1>Main Ingredients for {{ slug }}</h1>
+    </div>
+
+    <h5 *ngIf="loadingDataIngreDetail" class="poppins-medium" style="margin-top: 1.25rem; font-size: 1.5rem;">Memuat Ingredient...</h5>
+    <div *ngIf="ingredientDetail">
+        <div *ngIf="!loadingDataIngreDetail" class="wrapper-list-detail-ingre">
+            <div *ngFor="let ingre of ingredientDetail;" [routerLink]="['/ingredient']" class="wrapper-box-detail-ingre">
+                <div class="box-item-detail-ingre" (click)="navigateToDetailsById(ingre)">
+                    <div class="bg-overlay"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="bevel"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <img [src]="ingre.thumbnail" [alt]="`Cooking Meals - ${slug}`" class="image-ingre-detail">
+                    <div class="ingre-detail">
+                        <h2>{{ ingre.name }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+</section>
