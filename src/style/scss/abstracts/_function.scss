@@ -1,0 +1,3 @@
+@function gridTemplateColumn($count-column) {
+    @return repeat($count-column, minmax(0, 1fr));
+}
